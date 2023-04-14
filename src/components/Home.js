@@ -2,10 +2,10 @@ import movies from '../data/movies'
 import MovieItems from '../components/MovieItems'
 import { useState } from 'react';
 
-// console.log(movies);
+console.log(movies);
 const Home = () => {
     const [movie, setMovies] = useState(movies)
-    const [movieInput, setMovieInput] = useState([])
+    // const [movieInput, setMovieInput] = useState([])
 
     const ascendDate = () => {
         let sortDateAscend = [...movie]
@@ -47,7 +47,7 @@ const Home = () => {
     }
 
     const toZa = () => {
-        let sortZtoA = [...movies]
+        let sortZtoA = [...movie]
 
         movies.sort((x, y) => {
 
@@ -65,25 +65,28 @@ const Home = () => {
         setMovies(sortZtoA)
     }
 
+    // setzt den neuen title aktuell nur in die console
     const addFilm = () => {
-        const inputFilmName = document.querySelector('.input_text').value
-        console.log(inputFilmName);
-        setMovieInput([...movieInput, inputFilmName])
+        const title = document.querySelector('.input_text').value
+        console.log([...movie, { title }]);
+        setMovies([...movie, { title }])
         document.querySelector('.input_text').value = ""
     }
 
     return (
         <div>
             <section className="navbar">
-                <div>
+                <form action="">
                     <input className='input_text' type="text" name="" id="inputText" />
                     <input className='add_button' onClick={addFilm} type="button" value="Add film" />
-                </div>
-                <input className='style_button' onClick={ascendDate} type="button" value="Sort by Date Ascending" />
-                <input className='style_button' onClick={decendDate} type="button" value="Sort by Date Descending" />
-                <input className='style_button' onClick={bestRate} type="button" value="Best Rate" />
-                <input className='style_button' onClick={toAz} type="button" value="A-Z" />
-                <input className='style_button' onClick={toZa} type="button" value="Z-A" />
+                </form>
+                <form action="">
+                    <input className='style_button' onClick={ascendDate} type="button" value="Sort by Date Ascending" />
+                    <input className='style_button' onClick={decendDate} type="button" value="Sort by Date Descending" />
+                    <input className='style_button' onClick={bestRate} type="button" value="Best Rate" />
+                    <input className='style_button' onClick={toAz} type="button" value="A-Z" />
+                    <input className='style_button' onClick={toZa} type="button" value="Z-A" />
+                </form>
             </section>
 
             <section className="movies_grid">
@@ -91,6 +94,7 @@ const Home = () => {
                     return (
                         < MovieItems
                             key={index}
+                            id={index}
                             title={element.title}
                             year={element.year}
                             director={element.director}

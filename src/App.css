@@ -32,9 +32,30 @@
 .movies_grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    gap: 10px;
 }
 
 .movies_background {
     background-color: cadetblue;
+}
+
+.movies_background a {
+    text-decoration: none;
+    color: lightskyblue;
+    font-weight: 800;
+}
+
+.movies_background a:hover {
+    color: palevioletred;
+}
+
+.movie_details a {
+    text-decoration: none;
+    background-color: lightskyblue;
+    padding: 1vh 2vw;
+    border-radius: 5px;
+}
+
+.movie_details a:hover {
+    background-color: palevioletred;
 }
